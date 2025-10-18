@@ -1,2 +1,6 @@
 #db 환경 설정 파일
 .env
+
+pymongo
+python-dotenv
+motor
