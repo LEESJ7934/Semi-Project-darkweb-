@@ -30,24 +30,24 @@ service = Service(
 )
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get("http://z3wqggtxft7id3ibr7srivv5gjof5fwg76slewnzwwakjuf3nlhukdid.onion/blog")
-time.sleep(3)
+time.sleep(1)
 
 contents = driver.find_elements(By.CLASS_NAME, "publications-list__publication")
-for i in contents:
-    content = i.text
-    print(content)
-
 collection = db['leaked_data']
 
 
-doc = {
-    "text": content,
-    "source": "onion_blog",          
-    "scraped_at": datetime.datetime.utcnow()
-}
 
 try:
-    collection.insert_one(doc)
+    for i in contents:
+        content = i.text
+        doc = {
+            "text": content,
+            "source": "onion_blog",          
+            "scraped_at": datetime.datetime.utcnow()
+            }
+        collection.insert_one(doc)
+        if "_id" in doc:
+            del doc["_id"]
     print(" -> Saved to MongoDB")
 except Exception as e:
     print(" -> MongoDB insert error:", e)
