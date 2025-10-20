@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
+from elasticsearch import Elasticsearch
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pymongo import MongoClient
