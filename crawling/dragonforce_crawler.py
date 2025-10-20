@@ -40,8 +40,8 @@ try:
     for i in contents:
         try:
             content = i.text.strip()
-            hash_id = hashlib.md5(content.encode('utf-8')).hexdigest()
             company_names = i.find_element(By.CLASS_NAME, "list-publication__name").text.strip()
+            hash_id = hashlib.md5(company_names.encode('utf-8')).hexdigest()
             company_url = i.find_element(By.CSS_SELECTOR, "p.publication-addictional__row a.addiction-row__text.addictional-row__link").text.strip()
             dercription = i.find_element(By.CLASS_NAME, "list-publication__description").text.strip()
             publication_date = i.find_element(By.CLASS_NAME, "publication-footer__date").text.strip()
@@ -52,15 +52,20 @@ try:
                 "company_url" : company_url,
                 "description" : dercription,
                 "publication_date" : publication_date,     
-                "scraped_at": datetime.datetime.utcnow()
+                "scraped_time": datetime.datetime.utcnow()
                 }
             
         except Exception as e:
             print(f"크롤링 중 오류 발생: {e}")
 
-        collection.insert_one(doc)
-        if "_id" in doc:
-            del doc["_id"]
+        collection.update_one(
+            {"_id": doc["_id"]},  
+            {"$set": doc},       
+            upsert=True           
+            )
     print(" -> Saved to MongoDB")
 except Exception as e:
     print(" -> MongoDB insert error:", e)
+
+
+
