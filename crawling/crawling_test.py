@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup as bs
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
@@ -9,6 +8,7 @@ from dotenv import load_dotenv
 import os
 import datetime
 import hashlib
+
 # .env 파일 불러오기
 load_dotenv()
 
@@ -20,7 +20,7 @@ DB_NAME = os.getenv("DB_NAME")
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
-#동적 크롤링
+#크롤링
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 chrome_options = Options()
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
@@ -30,7 +30,6 @@ service = Service(
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get("http://z3wqggtxft7id3ibr7srivv5gjof5fwg76slewnzwwakjuf3nlhukdid.onion/blog")
 time.sleep(1)
-
 
 contents = driver.find_elements(By.CLASS_NAME, "publications-list__publication")
 
@@ -58,6 +57,7 @@ try:
         except Exception as e:
             print(f"크롤링 중 오류 발생: {e}")
 
+        #중복 id 방지 & 새로운 데이터가 있으면 업데이트
         collection.insert_one(doc)
         if "_id" in doc:
             del doc["_id"]
