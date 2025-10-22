@@ -1,12 +1,9 @@
 # 1) SRV 방식 (권장)
-mongo-url = "${ATLAS_URI}"
-
-# 2) SRV가 DNS 문제로 안 될 때는 아래처럼 Standard를 사용 (주석 해제하고 윗줄은 주석)
-# mongo-url = "${ATLAS_URI_STD}"
+mongo-url = "REMOVED_MONGODB_URI"
 
 ########################
 # Elasticsearch
-########################
+######################
 elasticsearch-urls = ["http://elasticsearch:9200"]
 
 ########################

@@ -33,37 +33,34 @@ chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 service = Service(CHROMEDRIVER_PATH)
 now_kst = datetime.datetime.now(ZoneInfo("Asia/Seoul"))
 driver = webdriver.Chrome(service=service, options=chrome_options)
-
-############################################## 크롤링 공통 코드#################################################################
-
-
-driver.get("http://z3wqggtxft7id3ibr7srivv5gjof5fwg76slewnzwwakjuf3nlhukdid.onion/blog")
-time.sleep(1)
-
-
-
-contents = driver.find_elements(By.CLASS_NAME, "publications-list__publication")
 collection = db['leaked_data']
+############################################## 크롤링 공통 코드#################################################################
+driver.get("http://jvkpexgkuaw5toiph7fbgucycvnafaqmfvakymfh5pdxepvahw3xryqd.onion/")
+
+
+contents = driver.find_elements(By.CLASS_NAME, "book-card")
+for i in contents:
+    country = i.find_element(By.CSS_SELECTOR, "div > span").text.strip()
+    print(country)
 
 try:
     for i in contents:
         try:
-            company_names = i.find_element(By.CLASS_NAME, "list-publication__name").text.strip()
-            company_url = i.find_element(By.CSS_SELECTOR, "div.list-publication__addictional p.publication-addictional__row a.addiction-row__text.addictional-row__link").text.strip()
-            data_size = i.find_element(By.CSS_SELECTOR, "p.publication-addictional__row:last-of-type span.addictional-row__text").text.strip()
-            description = i.find_element(By.CLASS_NAME, "list-publication__description").text.strip()
-            publication_date = i.find_element(By.CLASS_NAME, "publication-footer__date").text.strip()
-            raw_id = f"{company_names}_{description}_{data_size}"
+            company_names = i.find_element(By.CSS_SELECTOR, "div > h3").text.strip()
+            company_url = i.find_element(By.CSS_SELECTOR, "div:nth-of-type(3)").text.strip()
+            data_size = i.find_element(By.CSS_SELECTOR, "div:nth-of-type(4)").text.strip()
+            country = i.find_element(By.CSS_SELECTOR, "div > span").text.strip()
+            raw_id = f"{company_names}_{country}_{data_size}"
             hash_id = hashlib.md5(raw_id.encode("utf-8")).hexdigest()
             doc = {
-                "_id": "dragonforce_" + hash_id,
+                "_id": "Black Shrantac_" + hash_id,
                 "company_name": company_names,
                 "company_url" : company_url,
-                "country" : "unknown",
-                "description" : description,
+                "country" : country,
+                "description" : "unknown",
                 "location"    : "unknown",
                 "data_size" : data_size,
-                "publication_date" : publication_date,     
+                "publication_date" : "unknown", 
                 "scraped_time": now_kst
                 }
         
@@ -80,6 +77,5 @@ try:
     print(" -> Saved to MongoDB")
 except Exception as e:
     print(" -> MongoDB insert error:", e)
-
 
 

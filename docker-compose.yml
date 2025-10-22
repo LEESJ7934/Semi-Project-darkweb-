@@ -29,8 +29,9 @@ services:
     depends_on: [elasticsearch]
     volumes:
       - ./monstache/monstache.config.toml:/config/monstache.config.toml:ro
+    environment:
+      - ATLAS_URI=mongodb+srv://<cluster-url>/myDB?retryWrites=true&w=majority
     command: ["-f", "/config/monstache.config.toml"]
     restart: unless-stopped
-
 volumes:
   esdata: {}
