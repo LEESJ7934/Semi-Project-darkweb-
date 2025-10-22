@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from elasticsearch import Elasticsearch
 from zoneinfo import ZoneInfo
-
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pymongo import MongoClient
@@ -36,51 +36,62 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 ############################################## 크롤링 공통 코드#################################################################
 
 
-driver.get("http://z3wqggtxft7id3ibr7srivv5gjof5fwg76slewnzwwakjuf3nlhukdid.onion/blog")
+driver.get("http://gunrabxbig445sjqa535uaymzerj6fp4nwc6ngc2xughf2pedjdhk4ad.onion/")
 time.sleep(1)
 
-
-
-contents = driver.find_elements(By.CLASS_NAME, "publications-list__publication")
+contents = driver.find_elements(By.CLASS_NAME, "tile")
 collection = db['leaked_data']
 
 try:
     for i in contents:
         try:
-            company_names = i.find_element(By.CLASS_NAME, "list-publication__name").text.strip()
-            company_url = i.find_element(By.CSS_SELECTOR, "div.list-publication__addictional p.publication-addictional__row a.addiction-row__text.addictional-row__link").text.strip()
-            data_size = i.find_element(By.CSS_SELECTOR, "p.publication-addictional__row:last-of-type span.addictional-row__text").text.strip()
-            description = i.find_element(By.CLASS_NAME, "list-publication__description").text.strip()
-            publication_date = i.find_element(By.CLASS_NAME, "publication-footer__date").text.strip()
-            raw_id = f"{company_names}_{description}_{data_size}"
+            company_names = i.find_element(By.CSS_SELECTOR, "strong a").text.strip()
+            parts = company_names.split("|")
+            if len(parts) > 1:
+                company_name = parts[0]
+                data_size = parts[1]
+            else:
+                company_name = parts[0]
+                data_size = "unknown"
+            hash_id = hashlib.md5(company_names.encode('utf-8')).hexdigest()
+            company_overview_text = i.find_element(By.CSS_SELECTOR, "div:nth-of-type(2)").text.strip()
+            parts = company_overview_text.split("|")
+            if len(parts) > 2:
+                country = parts[1].strip()
+                company_url = parts[2].strip()
+            else:
+                country = "abroad"
+                company_url = "unknonn"
+            try:
+                data_contents = i.find_element(By.CSS_SELECTOR, "ul > li > a").text.strip()
+            except NoSuchElementException:
+                data_contents = "unknown"  # 없을 경우 None 또는 "" 등으로 처리
+            raw_id = f"{company_names}_{data_contents}_{data_size}"
             hash_id = hashlib.md5(raw_id.encode("utf-8")).hexdigest()
             doc = {
-                "_id": "dragonforce_" + hash_id,
+                "_id": "gunra_" + hash_id,
+                "scraped_time": now_kst,
+
                 "company_name": company_names,
                 "company_url" : company_url,
-                "country" : "unknown",
-                "description" : description,
-                "location"    : "unknown",
+                "country"    : country,
+
+                "data_contetns" : data_contents,
                 "data_size" : data_size,
-                "publication_date" : publication_date,     
-                "scraped_time": now_kst
+                "publication_date" : "unknwon",
+
+                "description" : "unknown", 
+
                 }
         
         except Exception as e:
             print(f"크롤링 중 오류 발생: {e}")
-
-        raw_date = doc["publication_date"] 
-        try: 
-            doc["publication_date"] = datetime.strptime(raw_date, "%d %B %Y").strftime("%Y-%m-%d") 
-        except: 
-            pass 
-
+            
         collection.update_one(
             {"_id": doc["_id"]},  
             {"$set": doc},       
             upsert=True           
             )
-        
         
     print(" -> Saved to MongoDB")
 except Exception as e:
