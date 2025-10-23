@@ -1,14 +1,14 @@
+#gunra 사이트 크롤링
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
-from elasticsearch import Elasticsearch
-from zoneinfo import ZoneInfo
+from datetime import datetime, timezone, timedelta
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import os, datetime
+import os
 import hashlib
 # .env 파일 불러오기
 load_dotenv()
@@ -28,7 +28,8 @@ chrome_options = Options()
 
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 
-now_kst = datetime.datetime.now(ZoneInfo("Asia/Seoul"))
+now_utc = datetime.now(timezone.utc)
+real_time = now_utc + timedelta(hours=9)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 ############################################## 크롤링 공통 코드#################################################################
@@ -68,9 +69,9 @@ try:
             hash_id = hashlib.md5(raw_id.encode("utf-8")).hexdigest()
             doc = {
                 "_id": "gunra_" + hash_id,
-                "scraped_time": now_kst,
+                "scraped_time": real_time,
 
-                "company_name": company_names,
+                "company_name": company_name,
                 "company_url" : company_url,
                 "country"    : country,
 

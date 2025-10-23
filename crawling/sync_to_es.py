@@ -1,4 +1,4 @@
-# sync_to_es.py
+# 데이터 동기화 코드
 
 from elasticsearch.helpers import BulkIndexError
 from elasticsearch import Elasticsearch
@@ -19,26 +19,6 @@ db = client[DB_NAME]
 
 es = Elasticsearch(ES_URI)
 
-# 매핑 세팅
-if not es.indices.exists(index=INDEX):
-    es.indices.create(
-        index=INDEX,
-        mappings={
-            "properties": {
-                "company_name": {"type": "text"},
-                "company_url":  {"type": "keyword"},
-                "country" : {"type" : "keyword"},
-                "description":  {"type": "text"},
-                "data_contents": {"type": "text"},
-                "data_size" : {"type" : "text"},
-                "publication_date": {"type": "text"},
-                "scraped_time": { "type": "date" },
-            }
-        },
-    )
-
-
-
 def gen_actions():
     for doc in db["leaked_data"].find():
         es_id = str(doc.pop("_id"))        
@@ -54,10 +34,10 @@ def gen_actions():
 
 try:
     result = bulk(es, gen_actions(), refresh="wait_for")
-    print("✅ Elasticsearch bulk indexing complete!")
+    print("갱신 완료!")
     print("Result:", result)
 except BulkIndexError as e:
-    print("❌ 일부 문서 인덱싱 실패!")
+    print(" 일부 문서 인덱싱 실패!")
     print(f"총 실패 문서 수: {len(e.errors)}\n")
     
     for i, err in enumerate(e.errors[:3]):

@@ -1,14 +1,14 @@
+#black_shrantac 사이트 크롤링
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
-from elasticsearch import Elasticsearch
-from zoneinfo import ZoneInfo
-
+from datetime import datetime, timezone, timedelta
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import os, datetime
+import os
 import hashlib
 # .env 파일 불러오기
 load_dotenv()
@@ -27,21 +27,17 @@ service = Service(CHROMEDRIVER_PATH)
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 chrome_options = Options()
 
-
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 
 service = Service(CHROMEDRIVER_PATH)
-now_kst = datetime.datetime.now(ZoneInfo("Asia/Seoul"))
+now_utc = datetime.now(timezone.utc)
+real_time = now_utc + timedelta(hours=9)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 collection = db['leaked_data']
 ############################################## 크롤링 공통 코드#################################################################
 driver.get("http://jvkpexgkuaw5toiph7fbgucycvnafaqmfvakymfh5pdxepvahw3xryqd.onion/")
 
-
 contents = driver.find_elements(By.CLASS_NAME, "book-card")
-for i in contents:
-    country = i.find_element(By.CSS_SELECTOR, "div > span").text.strip()
-    print(country)
 
 try:
     for i in contents:
@@ -53,15 +49,19 @@ try:
             raw_id = f"{company_names}_{country}_{data_size}"
             hash_id = hashlib.md5(raw_id.encode("utf-8")).hexdigest()
             doc = {
-                "_id": "Black Shrantac_" + hash_id,
+                "_id": "black_shrantac" + hash_id,
+                "scraped_time": real_time,
+
                 "company_name": company_names,
                 "company_url" : company_url,
-                "country" : country,
-                "description" : "unknown",
-                "location"    : "unknown",
+                "country"    : country,
+
+                "data_contetns" : "unknown",
                 "data_size" : data_size,
-                "publication_date" : "unknown", 
-                "scraped_time": now_kst
+                "publication_date" : "unknwon",
+
+                "description" : "unknown", 
+
                 }
         
         except Exception as e:

@@ -1,4 +1,4 @@
-#dragonforce 사이트 크롤링
+
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
@@ -26,8 +26,6 @@ service = Service(CHROMEDRIVER_PATH)
 #동적 크롤링
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 chrome_options = Options()
-
-
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 
 service = Service(CHROMEDRIVER_PATH)
@@ -38,41 +36,45 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 
 ############################################## 크롤링 공통 코드#################################################################
 
+driver.get("http://lockbit3753ekiocyo5epmpy6klmejchjtzddoekjlnt6mu3qh4de2id.onion/")  
+time.sleep(15)
 
-driver.get("http://z3wqggtxft7id3ibr7srivv5gjof5fwg76slewnzwwakjuf3nlhukdid.onion/blog")
-time.sleep(1)
-
-
-
-contents = driver.find_elements(By.CLASS_NAME, "publications-list__publication")
+contents = driver.find_elements(By.CSS_SELECTOR, ".post-block.good")
 collection = db['leaked_data']
+count = 0
 
 try:
     for i in contents:
         try:
-            company_names = i.find_element(By.CLASS_NAME, "list-publication__name").text.strip()
-            company_url = i.find_element(By.CSS_SELECTOR, "div.list-publication__addictional p.publication-addictional__row a.addiction-row__text.addictional-row__link").text.strip()
-            data_size = i.find_element(By.CSS_SELECTOR, "p.publication-addictional__row:last-of-type span.addictional-row__text").text.strip()
-            description = i.find_element(By.CLASS_NAME, "list-publication__description").text.strip()
-            publication_date = i.find_element(By.CLASS_NAME, "publication-footer__date").text.strip()
-            raw_id = f"{company_names}_{description}_{data_size}"
+            if count >= 50:
+                break;
+            company_overview_text = i.find_element(By.CSS_SELECTOR, "div:nth-of-type(1)").text.strip()
+            parts = company_overview_text.replace("published", "").split("\n")
+            # URL에서 회사 이름과 도메인을 분리
+            company_url = parts[0].strip()
+            # URL에서 회사 이름과 도메인을 분리
+            company_name = company_url.split('.')[0].strip()  # .com, .net 등 앞부분 추출 
+            description = i.find_element(By.CSS_SELECTOR, "div.post-block-text").text.strip()
+            publication_date = i.find_element(By.CSS_SELECTOR, "div.updated-post-date").text.strip().replace("Updated:","")
+            raw_id = f"{company_url}_{description}_{publication_date}"
             hash_id = hashlib.md5(raw_id.encode("utf-8")).hexdigest()
+            count+=1
             doc = {
-                "_id": "dragonforce_" + hash_id,
+                "_id": "bitlock_" + hash_id,
                 "scraped_time": real_time,
 
-                "company_name": company_names,
+                "company_name": company_name,
                 "company_url" : company_url,
                 "country"    : "unknown",
 
                 "data_contetns" : "unknown",
-                "data_size" : data_size,
-                "publication_date" : "unknwon",
+                "data_size" : "unknown",
+                "publication_date" : publication_date,
 
-                "description" : "unknown", 
+                "description" : description, 
 
                 }
-        
+            
         except Exception as e:
             print(f"크롤링 중 오류 발생: {e}")
 
@@ -86,6 +88,3 @@ try:
     print(" -> Saved to MongoDB")
 except Exception as e:
     print(" -> MongoDB insert error:", e)
-
-
-
