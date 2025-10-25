@@ -1,0 +1,13 @@
+# .gitignore (최종본)
+
+# Python cache
+__pycache__/
+
+# Virtual environment
+.venv/
+
+# Environment variables file
+.env
+
+# (사용자님이 추가한 보안 규칙)
+config.py

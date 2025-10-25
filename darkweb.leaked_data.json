@@ -1,0 +1,663 @@
+[{
+  "_id": "gunra_1dafbc497ccc91dea55b7836fb9f2561",
+  "company_name": "miraense.com ",
+  "company_url": "unknonn",
+  "country": "abroad",
+  "data_contetns": "personal documents",
+  "data_size": " 8TB internal documents, 2TB billing database",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_59f65fddedc807bc9a15f97820a706a9",
+  "company_name": "hwacheon ",
+  "company_url": "http://www.hwacheon.com",
+  "country": "Location: Korea",
+  "data_contetns": "265GB Financial Documents | we will continuously add new data ( now extrating zipped files ... )",
+  "data_size": " 265GB Financial Documents (will add more",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_6120c4d9b9f49b0c5b248ef8205acf60",
+  "company_name": "Samwha Capacitor Group ",
+  "company_url": "http://www.samwha.co.kr",
+  "country": "Location: Korea",
+  "data_contetns": "114GB Financial Documents",
+  "data_size": " 114GB Financial Documents",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_11c750bf99a7b8317b04f41021827eba",
+  "company_name": "SEGUROS AMÉRICA",
+  "company_url": "https://www.segurosamerica.com.ni/",
+  "country": "Location: Nicaragua",
+  "data_contetns": "customer data from insurance database",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_56f0e733a084a87913cc8d9032b9efee",
+  "company_name": "Justicia Penal Militar ",
+  "company_url": "http://www.justiciamilitar.gov.co/home",
+  "country": "Location: Colombia",
+  "data_contetns": "datos del funcionario interno 1",
+  "data_size": " 45TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_3b8c21a9cd4eee55d016871e8842b06e",
+  "company_name": "American Hospital Dubai ",
+  "company_url": "https://www.ahdubai.com",
+  "country": "Location: Dubai, UAE",
+  "data_contetns": "file index with download urls",
+  "data_size": " 40TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_b62e8b5c4eb0750670bd314f468bb053",
+  "company_name": "ACCS Le Groupe",
+  "company_url": "https://www.accslegroupe.ca/en/",
+  "country": "Location: Canada",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_df2a5d575c2ee2aba151a7f7d2bb8f99",
+  "company_name": "Shinko Shoji",
+  "company_url": "http://www.shinkocorp.co.jp/",
+  "country": "Location: Japan",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_610f5013c20e35202ff381d046e15e55",
+  "company_name": "Dar Al Teb",
+  "company_url": "https://daralteb.com/en/home-page/",
+  "country": "Location: Egypt",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_3b58baa46fe38d7a82937b63d4e927c5",
+  "company_name": "Varela Hermanos",
+  "company_url": "https://www.varelahermanos.com/conocenos/",
+  "country": "Location: Panama",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_f268ea62f3720049420fa567961952d6",
+  "company_name": "KLINGER Italy",
+  "company_url": "https://www.klinger.it/",
+  "country": "Location: Italy",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_dc3d2f3146268851bf66e9fc40aedcb3",
+  "company_name": "Bioprofarma Bagó S.A",
+  "company_url": "https://bioprofarma-bago.com.ar/en/",
+  "country": "Location: Argentina",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_99aa3ed70c338a5e303d3e4d5920e22b",
+  "company_name": "TOMOKU CO., LTD.",
+  "company_url": "https://www.tomoku.co.jp/",
+  "country": "Location: Japan",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_1934ea7100360abcf89563ad1c49896b",
+  "company_name": "Grupo Jorge Batista",
+  "company_url": "https://vendasjb.com/",
+  "country": "Location: Brazil",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_57a2c449aaeb602ae9f95cde64d15440",
+  "company_name": "Adria Grupa",
+  "company_url": "https://adria-grupa.hr/",
+  "country": "Location: Croatia",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_542cf4a1a4e223531962b49a34494d6d",
+  "company_name": "Anjos Ramos",
+  "company_url": "https://anjosramos.com.br/",
+  "country": "Location: Brazil",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "gunra_a35a35fa4f8851f4911fd0d6557e88d9",
+  "company_name": "Olho D'Água Distribuidora",
+  "company_url": "https://www.aguasolhodagua.com.br/",
+  "country": "Location: Brazil",
+  "data_contetns": "unknown",
+  "data_size": "unknown",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T15:01:48.452Z"
+  }
+},
+{
+  "_id": "dragonforce_b4a40af2d2d2c3963eb08ced0ba32765",
+  "company_name": "Egaraset",
+  "company_url": "www.egaraset.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "44.49 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_78e2f54e8fe60e4f115e4b172c68406e",
+  "company_name": "Marmotech",
+  "company_url": "www.marmotech.com.do",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "907.13 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_9ec68780958b0fb08495b71304bf3eaf",
+  "company_name": "Dental Society of La Plata",
+  "company_url": "www.solp.org.ar",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "911.29 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_a687cc34f49a863fd670dbac51203119",
+  "company_name": "gardiners solicitors",
+  "company_url": "www.gardinerssolicitors.co.uk",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "87.4 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_762163fe40889c11a8581a5612859037",
+  "company_name": "José Guma S.A.",
+  "company_url": "www.joseguma.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "75.44 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_746c9500998d06253689bf1450ad8740",
+  "company_name": "The Law Offices of Michael C George",
+  "company_url": "www.lawofficemcg.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "442.61 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_826a5e1f0857bb33dc3d63245037b5af",
+  "company_name": "Autorotor",
+  "company_url": "www.autorotorgroup.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "124.64 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_6d0c9df7bc1560f48335bc70b8404759",
+  "company_name": "Fountains Condominium Operations",
+  "company_url": "www.fcocondo.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "453.66 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_859dcc32d6d8bf6f2ad1fb58223332bd",
+  "company_name": "Express Logistics and Distribution Ltd",
+  "company_url": "www.eld.bg",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "578.03 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_b8abd24c964ff5c0abc2bc30cd473159",
+  "company_name": "Downes",
+  "company_url": "www.downesbrokerage.com.au",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "98.74 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_ffe4a43bffce808830c3cec1efcec9ca",
+  "company_name": "Cofiex Asesoría de Empresas, S.L",
+  "company_url": "www.cofiex.es",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "68.25 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_86556bfee00efd764c4fca6981228d41",
+  "company_name": "Grupo Serex",
+  "company_url": "www.gruposerex.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "110.82 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_339e84580d7c305cb1ee6a37a0680045",
+  "company_name": "Allgäu Stern Hotel",
+  "company_url": "www.allgaeustern.de",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "12.73 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_dcec26095a01cf77ba31ac8eb33c3d4b",
+  "company_name": "LC Informatique Sàrl",
+  "company_url": "www.lc-informatique.ch",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "1.46 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_57973ff6d1f7c60506ef80d9f7e70532",
+  "company_name": "Asserson",
+  "company_url": "www.asserson.co.uk",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "387.59 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_c076bc5d10063dcb20f5042529774b5d",
+  "company_name": "Cardinal Machinery",
+  "company_url": "www.cardinalmachinery.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "104.25 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_740ff2a92ec02c572cd3ad5ee45befdd",
+  "company_name": "Memphis Millwork",
+  "company_url": "www.memphismasterworks.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "109.22 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_9fa9dd91e63f16b174104f13e77bbcea",
+  "company_name": "FTCS Forage",
+  "company_url": "www.ftcs-forage.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "193.35 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_37ac3c28c171d3ae83579064702320bb",
+  "company_name": "Rothmann Immobilien",
+  "company_url": "www.engelvoelkers.de",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "102.58 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_8464a3406594e2919231c95be823c261",
+  "company_name": "Greenville Legal",
+  "company_url": "www.greenvillelegal.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "3 TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_736ff408f6571ad8eb813c7628c882e7",
+  "company_name": "Concord New Energy Group",
+  "company_url": "www.cn.cnegroup.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "108.76 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_d167eef4032669f12842ddc5411ed8eb",
+  "company_name": "Engineered Advantage",
+  "company_url": "www.eapsc.net",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "249.49 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_27177a9ae979f85f47cbe87a151104a5",
+  "company_name": "Caprez Ingenieure AG",
+  "company_url": "www.caprez-ing.ch",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "746.85 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "dragonforce_ee77b083969bdb7c03921acfe8c9f73b",
+  "company_name": "Engineered Components",
+  "company_url": "www.engcomponents.com",
+  "country": "unknown",
+  "data_contetns": "unknown",
+  "data_size": "111.08 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:44:35.081Z"
+  }
+},
+{
+  "_id": "black_shrantacd2ab82d465f1cbc8d9da7feb8809fdde",
+  "company_name": "Cabinets 2000, LLC",
+  "company_url": "🔗 www.cabinets2000.com",
+  "country": "🗺️ United States",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 1.5TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac52fe8e322ca9e85fb040bbc92f310cd9",
+  "company_name": "Al Ahly Leasing & Factoring Company",
+  "company_url": "🔗 alc.com.eg",
+  "country": "🗺️ Egypt",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 6TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac341a27f88f05abab9f2a9a64644aca6d",
+  "company_name": "Computer World W.L.L",
+  "company_url": "🔗 cwbah.com",
+  "country": "🗺️ Bahrain",
+  "data_contetns": "unknown",
+  "data_size": "DATASIZE: 6TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac8b372de7705f34270c65b350f59ead3b",
+  "company_name": "Falco Electronics",
+  "company_url": "🔗 falco.com",
+  "country": "🗺️ Mexico",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 8 TB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac166bc3e362e5eb24180f34434613efc4",
+  "company_name": "Gulf Warranties LLC",
+  "company_url": "🔗 www.gulfwarranties.com",
+  "country": "🗺️ UAE",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 300 GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac0643c61426af0950372988c827028017",
+  "company_name": "SK shieldus",
+  "company_url": "🔗 www.skshieldus.com",
+  "country": "🗺️ South Korea",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 24 GB\nBlog updated",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac0b2f1745bd467767816c308773c6d4b0",
+  "company_name": "Standard Fiber",
+  "company_url": "🔗 standardfiber.com",
+  "country": "🗺️ United States",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 2TB\nFIRST DISCLOSURE: 1GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac96bdbba03fe80408bb44e7841da9bd2a",
+  "company_name": "General Directorate of Taxes and Estates",
+  "company_url": "🔗 dgid.sn",
+  "country": "🗺️ Senegal",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 1TB\nChoice of DGID",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac9780924930c6a251adc83b73ccc96016",
+  "company_name": "Klinglnberg india pvt ltd",
+  "company_url": "🔗 Klinglnberg.in",
+  "country": "🗺️ India",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE: 2TB\nSECOND DISCLOSURE: 3GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+},
+{
+  "_id": "black_shrantac1c22fb874668c10c60ea62f92c277c8d",
+  "company_name": "Altas Temizlik",
+  "company_url": "🔗 altastemizlik.com.tr",
+  "country": "🗺️ Turkey",
+  "data_contetns": "unknown",
+  "data_size": "DATA SIZE : 600GB\nSECOND DISCLOSURE: 3GB",
+  "description": "unknown",
+  "publication_date": "unknwon",
+  "scraped_time": {
+    "$date": "2025-10-23T01:45:07.855Z"
+  }
+}]
