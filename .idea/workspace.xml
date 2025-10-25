@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="database 설정 추가">
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/assets/demo/chart-area-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/assets/demo/chart-bar-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/assets/demo/chart-pie-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/assets/demo/datatables-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/assets/img/error-404-monochrome.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/js/datatables-simple-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/static/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/templates/mongoDbConnect/table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Semi-Project-darkweb-.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Semi-Project-darkweb-.iml" afterDir="false" />
+    <list default="true" id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/DjangoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/DjangoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/templates/mongoDbConnect/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/templates/mongoDbConnect/table.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,24 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/dnwhd/PycharmProjects/Semi-Project-darkweb-/DjangoProject/mongoDbConnect/templates/mongoDbConnect",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dnwhd/PycharmProjects/Semi-Project-darkweb-/DjangoProject/mongoDbConnect/templates/mongoDbConnect&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect\templates\mongoDbConnect" />
@@ -122,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760983983934</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용">
+      <option name="closed" value="true" />
+      <created>1761346057294</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761346057294</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +124,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="database 설정 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="database 설정 추가" />
+    <MESSAGE value="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용" />
   </component>
 </project>
