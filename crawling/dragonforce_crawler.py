@@ -14,7 +14,7 @@ import hashlib
 load_dotenv()
 
 # 환경변수 읽기
-MONGO_URI = os.getenv("ATLAS_URI")
+MONGO_URI = os.getenv("DB_URI")
 DB_NAME = os.getenv("DB_NAME")
 
 # MongoDB 연결
