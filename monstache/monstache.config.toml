@@ -1,0 +1,30 @@
+# 1) SRV 방식 (권장)
+mongo-url = "mongodb://adminUser:root@localhost:27017/?replicaSet=rs0"
+
+########################
+# Elasticsearch
+######################
+elasticsearch-urls = ["http://elasticsearch:9200"]
+
+########################
+# 동작 옵션 (안정/재시작)
+########################
+resume = true
+resume-write-unsafe = true
+exit-after-direct-reads = false
+enable-http-server = true
+http-server-addr = ":8080"
+dropped-collections = true
+dropped-databases = true
+
+########################
+# 어떤 컬렉션을 싱크할지
+########################
+# 예: darkweb.leaked_data 만
+namespace-regex = '^darkweb\.leaked_data$'
+direct-read-namespaces = ["darkweb.leaked_data"]
+
+# 컬렉션 → 인덱스 매핑
+[[mapping]]
+namespace = "darkweb.leaked_data"
+index = "leaked_data"
