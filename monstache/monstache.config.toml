@@ -1,5 +1,5 @@
 # 1) SRV 방식 (권장)
-mongo-url = "mongodb://adminUser:root@localhost:27017/?replicaSet=rs0"
+mongo-url = "mongodb+srv://semi:semi@semi-darkweb.a4byixm.mongodb.net/?appName=semi-darkweb"
 
 ########################
 # Elasticsearch

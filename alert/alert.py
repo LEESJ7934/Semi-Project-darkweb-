@@ -241,7 +241,7 @@ def main_watcher():
 
     while True:
         try:
-            client = MongoClient(MONGO_CONN_STR, serverSelectionTimeoutMS=5000)
+            client = MongoClient(MONGO_CONN_STR)
             client.admin.command("ping")  # 연결 테스트
             print(">>> MongoDB 서버에 성공적으로 연결되었습니다.")
 
