@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   elasticsearch:
@@ -13,27 +13,8 @@ services:
       - "9300:9300"
     volumes:
       - esdata:/usr/share/elasticsearch/data
+      - /var/lib/mongo-data:/data/db
     restart: unless-stopped
-
-  mongodb:
-    image: mongo:6.0
-    container_name: mongodb
-    restart: always
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=adminUser
-      - MONGO_INITDB_ROOT_PASSWORD=root
-    volumes:
-      - ./mongo-data:/data/db
-      - ./mongo-keyfile:/data/keyfile
-      - ./init-repl.js:/docker-entrypoint-initdb.d/init-repl.js
-    entrypoint: >
-      /bin/bash -c "
-      chmod 600 /data/keyfile &&
-      chown mongodb:mongodb /data/keyfile &&
-      exec docker-entrypoint.sh mongod --replSet rs0 --auth --keyFile /data/keyfile --bind_ip_all
-      "
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.15.3
@@ -51,7 +32,6 @@ services:
     container_name: monstache
     depends_on:
       - elasticsearch
-      - mongodb
     volumes:
       - ./monstache/monstache.config.toml:/config/monstache.config.toml:ro
     environment:
