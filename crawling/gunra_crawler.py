@@ -21,7 +21,8 @@ DB_NAME = os.getenv("DB_NAME")
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
-CHROMEDRIVER_PATH = os.getenv("CHROMEDRIVER_PATH", "chromedriver/chromedriver.exe")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMEDRIVER_PATH = os.path.join(BASE_DIR, "chromedriver", "chromedriver.exe")
 service = Service(CHROMEDRIVER_PATH)
 #동적 크롤링}
 chrome_options = Options()
