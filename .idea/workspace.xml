@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용">
+    <list default="true" id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="그래프 추가 세부사항 이후 조정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/templates/mongoDbConnect/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/templates/mongoDbConnect/table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoProject/mongoDbConnect/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761346057294</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="그래프 추가 세부사항 이후 조정">
+      <option name="closed" value="true" />
+      <created>1761427403140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761427403140</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +131,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="database 설정 추가" />
     <MESSAGE value="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용" />
+    <MESSAGE value="그래프 추가 세부사항 이후 조정" />
+    <option name="LAST_COMMIT_MESSAGE" value="그래프 추가 세부사항 이후 조정" />
   </component>
 </project>
