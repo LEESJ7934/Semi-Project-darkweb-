@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="그래프 추가 세부사항 이후 조정">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/DjangoProject" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dnwhd0112&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/LEESJ7934/Semi-Project-darkweb-.git&quot;,
+    &quot;accountId&quot;: &quot;5cb1f3e5-a989-4203-a0ab-63d42ec8a3f0&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="34LCCJ2vtmZGV7yLSoUhTbk5I5A" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dnwhd/PycharmProjects/Semi-Project-darkweb-/DjangoProject/mongoDbConnect/templates/mongoDbConnect&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect\templates\mongoDbConnect" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect" />
+      <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect\templates\mongoDbConnect\static" />
+      <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect\templates\mongoDbConnect" />
+      <recent name="C:\Users\dnwhd\PycharmProjects\Semi-Project-darkweb-\DjangoProject\mongoDbConnect\static" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="881e6b98-3f6b-475e-aa61-ecf5fcbdea0f" name="변경" comment="" />
+      <created>1760983335798</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760983335798</updated>
+      <workItem from="1760983337015" duration="16000" />
+      <workItem from="1760983362707" duration="8000" />
+      <workItem from="1760983868605" duration="158000" />
+      <workItem from="1760984085078" duration="40000" />
+      <workItem from="1761009238313" duration="4651000" />
+      <workItem from="1761111185923" duration="5568000" />
+    </task>
+    <task id="LOCAL-00001" summary="database 설정 추가">
+      <option name="closed" value="true" />
+      <created>1760983983934</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1760983983934</updated>
+    </task>
+    <task id="LOCAL-00002" summary="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용">
+      <option name="closed" value="true" />
+      <created>1761346057294</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761346057294</updated>
+    </task>
+    <task id="LOCAL-00003" summary="그래프 추가 세부사항 이후 조정">
+      <option name="closed" value="true" />
+      <created>1761427403140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761427403140</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="database 설정 추가" />
+    <MESSAGE value="djongo -&gt; pymongo 사용하는 방향으로 변경&#10;bootstrap 적용" />
+    <MESSAGE value="그래프 추가 세부사항 이후 조정" />
+    <option name="LAST_COMMIT_MESSAGE" value="그래프 추가 세부사항 이후 조정" />
+  </component>
+</project>
