@@ -1,0 +1,17 @@
+# IDE Files (PyCharm / JetBrains)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Python Virtual Environment
+.venv/
+venv/
+env/
+__pycache__/
+
+# Compiled files
+*.pyc
+
+# Environment variables (Sensitive Info)
+.env
