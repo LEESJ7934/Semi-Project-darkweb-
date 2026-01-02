@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
 from datetime import datetime, timezone, timedelta
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pymongo import MongoClient
@@ -20,17 +21,15 @@ DB_NAME = os.getenv("DB_NAME")
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CHROMEDRIVER_PATH = os.path.join(BASE_DIR, "chromedriver", "chromedriver.exe")
-service = Service(CHROMEDRIVER_PATH)
+
 #동적 크롤링
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 chrome_options = Options()
 
-
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=chrome_options)
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
-
-service = Service(CHROMEDRIVER_PATH)
+chrome_options.add_argument("--headless")
 
 now_utc = datetime.now(timezone.utc)
 real_time = now_utc + timedelta(hours=9)
@@ -65,7 +64,7 @@ try:
                 "company_url" : company_url,
                 "country"    : "unknown",
 
-                "data_contetns" : "unknown",
+                "data_contents" : "unknown",
                 "data_size" : data_size,
                 "publication_date" : "unknwon",
 

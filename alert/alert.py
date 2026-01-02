@@ -64,9 +64,8 @@ def classify_risk(data: dict):
         .replace("location:", "")
         .strip()
     )
-    # 개선 5 주석: 1번 팀원이 data_contetns 오타 수정 시 아래 코드로 변경 필요
-    # contents = str(data.get("data_contents", "unknown")).lower()
-    contents = str(data.get("data_contetns", "unknown")).lower()  # 현재 오타 반영
+
+    contents = str(data.get("data_contents", "unknown")).lower()  # 현재 오타 반영
     data_size = str(data.get("data_size", "unknown")).lower()
     company_name = str(data.get("company_name", "unknown")).lower()
     company_url = (
@@ -203,7 +202,7 @@ def format_telegram_message(data: dict, level: str, reason: str, actor: str):
         f"■ 위험도: {level} ({reason})\n"
         f"■ 공격자: {actor.upper()}\n"
         f"■ 피해 규모: {data.get('data_size', 'unknown')}\n"
-        f"■ 유출 내용: {data.get('data_contetns', 'unknown')}\n"  # 현재 오타 반영
+        f"■ 유출 내용: {data.get('data_contents', 'unknown')}\n"  # 현재 오타 반영
         f"■ 국가: {data.get('country', 'unknown')}\n"
         f"■ URL: {data.get('company_url', 'unknown')}\n"
         f"■ 탐지 시각: {scraped_time_str}"
@@ -242,7 +241,7 @@ def main_watcher():
     while True:
         try:
             client = MongoClient(MONGO_CONN_STR)
-            client.admin.command("ping")  # 연결 테스트
+            client.admin.command("ping")  
             print(">>> MongoDB 서버에 성공적으로 연결되었습니다.")
 
             db = client[DB_NAME]
@@ -251,7 +250,7 @@ def main_watcher():
             pipeline = [{"$match": {"operationType": "insert"}}]
             with collection.watch(
                 pipeline, full_document="updateLookup"
-            ) as stream:  # MongoDB 4.0 이상 권장 옵션
+            ) as stream: 
                 print(">>> Change Stream 감시 시작. 새 데이터 삽입 대기 중...")
                 for change_event in stream:
                     print(

@@ -5,3 +5,15 @@ pymongo
 python-dotenv
 motor
 mongo-data
+
+.venv/
+venv/
+env/
+__pycache__/
+
+*.pyc
+ 
+.idea/
+*.iml
+*.iws
+*.ipr

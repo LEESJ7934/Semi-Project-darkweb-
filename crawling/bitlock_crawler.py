@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
@@ -6,6 +5,7 @@ from datetime import datetime, timezone, timedelta
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
@@ -21,20 +21,17 @@ DB_NAME = os.getenv("DB_NAME")
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CHROMEDRIVER_PATH = os.path.join(BASE_DIR, "chromedriver", "chromedriver.exe")
-service = Service(CHROMEDRIVER_PATH)
 #동적 크롤링
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 chrome_options = Options()
 chrome_options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
+# chrome_options.add_argument("--headless")
 
-service = Service(CHROMEDRIVER_PATH)
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 now_utc = datetime.now(timezone.utc)
 real_time = now_utc + timedelta(hours=9)
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
 ############################################## 크롤링 공통 코드#################################################################
 
 driver.get("http://lockbit3753ekiocyo5epmpy6klmejchjtzddoekjlnt6mu3qh4de2id.onion/")  
@@ -68,7 +65,7 @@ try:
                 "company_url" : company_url,
                 "country"    : "unknown",
 
-                "data_contetns" : "unknown",
+                "data_contents" : "unknown",
                 "data_size" : "unknown",
                 "publication_date" : publication_date,
 
