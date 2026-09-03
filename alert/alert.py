@@ -1,38 +1,49 @@
 # alerter.py (V3.0 최종 완성본)
-
+import asyncio
+import datetime
 import os
 import sys
-import asyncio
-from telegram import Bot # 텔레그램 라이브러리
-from pymongo import MongoClient  # MongoDB 라이브러리
-from dotenv import load_dotenv  # .env 파일 로더
-import datetime  # 날짜/시간 처리를 위함
-import time  # sleep 함수를 위함
+import time
+from pathlib import Path
 
-# -----------------------------------
-# 1. 설정 로드 (.env 파일 사용)
-# -----------------------------------
-load_dotenv()  # .env 파일의 내용을 환경 변수로 로드
+from dotenv import load_dotenv
+from pymongo import MongoClient
+from telegram import Bot
 
 
-# 환경 변수에서 설정값 읽기 (올바른 방식)
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")  # <-- .env 파일의 변수 '이름' 사용
-TELEGRAM_CHAT_ID_STR = os.getenv("TELEGRAM_CHAT_ID")  # <-- .env 파일의 변수 '이름' 사용
-MONGO_CONN_STR = os.getenv("DB_URI")  # <-- .env 파일의 변수 '이름' 사용
-DB_NAME = os.getenv("DB_NAME")  # <-- .env 파일의 변수 '이름' 사용
-COLLECTION_NAME = "leaked_data"  # 직접 지정
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(PROJECT_ROOT / ".env")
 
-# (필수) 설정값이 로드되었는지 확인 및 Chat ID 숫자 변환
-if not all([TELEGRAM_TOKEN, TELEGRAM_CHAT_ID_STR, MONGO_CONN_STR, DB_NAME]):
-    print("!!!.env 파일에 필요한 환경 변수가 설정되지 않았습니다.")
-    print("필수 변수: TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, DB_URI, DB_NAME")
-    sys.exit(1)  # 설정 없으면 스크립트 강제 종료
-try:
-    TELEGRAM_CHAT_ID = int(TELEGRAM_CHAT_ID_STR)  # Chat ID는 정수여야 함
-except ValueError:
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID_STR = os.getenv("TELEGRAM_CHAT_ID")
+MONGO_CONN_STR = os.getenv("DB_URI")
+DB_NAME = os.getenv("DB_NAME")
+COLLECTION_NAME = "leaked_data"
+
+required_settings = {
+    "TELEGRAM_TOKEN": TELEGRAM_TOKEN,
+    "TELEGRAM_CHAT_ID": TELEGRAM_CHAT_ID_STR,
+    "DB_URI": MONGO_CONN_STR,
+    "DB_NAME": DB_NAME,
+}
+
+missing_settings = [
+    name
+    for name, value in required_settings.items()
+    if not value
+]
+
+if missing_settings:
     print(
-        f"!!! 치명적 오류: .env 파일의 TELEGRAM_CHAT_ID ('{TELEGRAM_CHAT_ID_STR}')가 올바른 숫자가 아닙니다."
+        "필수 환경변수가 없습니다: "
+        + ", ".join(missing_settings)
     )
+    sys.exit(1)
+
+try:
+    TELEGRAM_CHAT_ID = int(TELEGRAM_CHAT_ID_STR)
+except ValueError:
+    print("TELEGRAM_CHAT_ID는 숫자여야 합니다.")
     sys.exit(1)
 
 
@@ -236,7 +247,7 @@ def main_watcher():
     print(
         f">>> 알림 시스템(V3.0) 시작: {DB_NAME}.{COLLECTION_NAME} 컬렉션을 감시합니다..."
     )
-    print(f"MongoDB URI: {MONGO_CONN_STR[:15]}...{MONGO_CONN_STR[-5:]}")
+    print(">>> MongoDB 연결 정보는 보안상 출력하지 않습니다.")
 
     while True:
         try:

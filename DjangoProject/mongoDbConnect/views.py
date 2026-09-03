@@ -8,8 +8,15 @@ from pymongo import MongoClient
 
 def latest_data_table(request):
     # MongoDB 연결 정보
-    client = MongoClient('REMOVED_MONGODB_URI')
-    db = client['djongo_database']
+    mongo_uri = os.getenv("DB_URI")
+
+    if not mongo_uri:
+        raise RuntimeError(
+            "DB_URI 환경변수가 설정되지 않았습니다."
+        )
+
+    client = MongoClient(mongo_uri)
+    db = client[os.getenv("DB_NAME", "darkweb")]
     collection = db['clawling_data']
 
     # 1. 데이터 조회
