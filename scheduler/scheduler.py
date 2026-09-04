@@ -1,68 +1,180 @@
+import os
+import subprocess
+import sys
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-import subprocess
-import datetime
-import threading
-import os
+from dotenv import load_dotenv
 
-# --- 실행 함수 ---
-def run_crawler(script_name):
-    """
-    특정 크롤러 스크립트를 subprocess로 실행.
-    """
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(PROJECT_ROOT / ".env")
+
+CRAWLER_SCRIPTS = (
+    "gunra_crawler.py",
+    "Black_Shrantac_crawler.py",
+    "dragonforce_crawler.py",
+    "bitlock_crawler.py",
+)
+
+KST = timezone(timedelta(hours=9))
+
+
+def read_positive_int(name: str, default: int) -> int:
+    raw_value = os.getenv(name, str(default)).strip()
+
     try:
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 상위 폴더 (프로젝트 루트)
-        script_path = os.path.join(base_dir, "crawling", script_name)
+        value = int(raw_value)
+    except ValueError as error:
+        raise ValueError(
+            f"{name}은 정수여야 합니다."
+        ) from error
 
-        subprocess.run(["python", script_path], check=True)
+    if value < 1:
+        raise ValueError(
+            f"{name}은 1 이상이어야 합니다."
+        )
 
-        end = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"[{end}]  실행 완료: {script_name}\n")
-    except subprocess.CalledProcessError as e:
-        print(f" {script_name} 실행 중 오류 발생: {e}\n")
-
-
-# 병렬 실행 (스레드) 
-def run_in_thread(script_name):
-    thread = threading.Thread(target=run_crawler, args=(script_name,))
-    thread.start()
+    return value
 
 
-# 스케줄러 설정
-scheduler = BlockingScheduler()
-
-# 각 사이트별 주기 설정 (분 단위)
-scheduler.add_job(
-    lambda: run_in_thread("gunra_crawler.py"),
-    IntervalTrigger(seconds=30),
-    id="gunra_crawler",
-    name="Gunra forum crawler "
+CRAWLER_INTERVAL_MINUTES = read_positive_int(
+    "CRAWLER_INTERVAL_MINUTES",
+    30,
+)
+CRAWLER_TIMEOUT_SECONDS = read_positive_int(
+    "CRAWLER_TIMEOUT_SECONDS",
+    600,
 )
 
-scheduler.add_job(
-    lambda: run_in_thread("Black_Shrantac_crawler.py"),
-    IntervalTrigger(seconds=30),
-    id="black_shrantac_crawler",
-    name="Black Shrantac crawler "
-)
 
-scheduler.add_job(
-    lambda: run_in_thread("dragonforce_crawler.py"),
-    IntervalTrigger(seconds=30),
-    id="dragonforce_crawler",
-    name="Dragonforce crawler "
-)
+def log(message: str) -> None:
+    timestamp = datetime.now(KST).strftime(
+        "%Y-%m-%d %H:%M:%S KST"
+    )
+    print(
+        f"[{timestamp}] {message}",
+        flush=True,
+    )
 
-scheduler.add_job(
-    lambda: run_in_thread("bitlock_crawler.py"),
-    IntervalTrigger(seconds=30),
-    id="bitlock_crawler",
-    name="Bitlock crawler "
-)
 
-print(" 다크웹 크롤링 스케줄러 시작\n(종료하려면 Ctrl + C)")
+def run_crawler(script_name: str) -> None:
+    script_path = (
+        PROJECT_ROOT
+        / "crawling"
+        / script_name
+    )
 
-try:
-    scheduler.start()
-except (KeyboardInterrupt, SystemExit):
-    print("\n 스케줄러 종료됨.")
+    if not script_path.is_file():
+        log(f"실행 파일 없음: {script_name}")
+        return
+
+    log(f"크롤러 실행 시작: {script_name}")
+
+    try:
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(script_path),
+            ],
+            cwd=PROJECT_ROOT,
+            capture_output=True,
+            text=True,
+            timeout=CRAWLER_TIMEOUT_SECONDS,
+            check=False,
+        )
+
+    except subprocess.TimeoutExpired:
+        log(
+            f"크롤러 제한시간 초과: {script_name} "
+            f"({CRAWLER_TIMEOUT_SECONDS}초)"
+        )
+        return
+
+    except OSError as error:
+        log(
+            f"크롤러 실행 실패: {script_name} "
+            f"({type(error).__name__})"
+        )
+        return
+
+    if result.stdout.strip():
+        print(result.stdout.strip())
+
+    if result.returncode == 0:
+        log(
+            f"크롤러 실행 완료: {script_name}"
+        )
+        return
+
+    if result.stderr.strip():
+        print(
+            result.stderr.strip(),
+            file=sys.stderr,
+        )
+
+    log(
+        f"크롤러 비정상 종료: {script_name} "
+        f"(종료 코드 {result.returncode})"
+    )
+
+
+def build_scheduler() -> BlockingScheduler:
+    scheduler = BlockingScheduler(
+        timezone=KST,
+        job_defaults={
+            "coalesce": True,
+            "max_instances": 1,
+            "misfire_grace_time": 60,
+        },
+    )
+
+    first_run = datetime.now(KST)
+
+    for index, script_name in enumerate(
+        CRAWLER_SCRIPTS
+    ):
+        job_id = Path(script_name).stem
+
+        scheduler.add_job(
+            run_crawler,
+            trigger=IntervalTrigger(
+                minutes=CRAWLER_INTERVAL_MINUTES,
+                timezone=KST,
+            ),
+            args=[script_name],
+            id=job_id,
+            name=f"{job_id} crawler",
+            coalesce=True,
+            max_instances=1,
+            misfire_grace_time=60,
+            replace_existing=True,
+            next_run_time=(
+                first_run
+                + timedelta(seconds=index * 15)
+            ),
+        )
+
+    return scheduler
+
+
+def main() -> None:
+    scheduler = build_scheduler()
+
+    log(
+        "다크웹 크롤링 스케줄러 시작 "
+        f"(주기: {CRAWLER_INTERVAL_MINUTES}분)"
+    )
+    log("종료하려면 Ctrl+C를 누르세요.")
+
+    try:
+        scheduler.start()
+
+    except (KeyboardInterrupt, SystemExit):
+        log("스케줄러 종료")
+
+
+if __name__ == "__main__":
+    main()
