@@ -1,62 +1,100 @@
-import json  # JSON 처리를 위해 추가
-import pandas as pd
+import json
+import os
+from collections import Counter
+from pathlib import Path
+
 from django.shortcuts import render
+from dotenv import load_dotenv
 from pymongo import MongoClient
+from pymongo.errors import PyMongoError
 
 
-# Plotly 관련 import는 모두 제거됨
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(PROJECT_ROOT / ".env")
+
+COLLECTION_NAME = "leaked_data"
+
 
 def latest_data_table(request):
-    # MongoDB 연결 정보
-    mongo_uri = os.getenv("DB_URI")
-
-    if not mongo_uri:
-        raise RuntimeError(
-            "DB_URI 환경변수가 설정되지 않았습니다."
-        )
-
-    client = MongoClient(mongo_uri)
-    db = client[os.getenv("DB_NAME", "darkweb")]
-    collection = db['clawling_data']
-
-    # 1. 데이터 조회
-    latest_companies = list(collection.find(
-        {}
-    ).sort('scraped_time', -1).limit(20))
-
-    # 2. 데이터프레임 변환 및 Chart.js용 JSON 생성
-    df = pd.DataFrame(latest_companies)
-
-    chart_data_json = '{}'  # 기본값은 빈 JSON 문자열
-
-    # 데이터가 있을 경우 JSON 생성
-    if not df.empty and 'company_name' in df.columns:
-        # 1. 빈도수 집계
-        name_counts = df['company_name'].value_counts().reset_index()
-        name_counts.columns = ['company_name', 'count']
-
-        # 빈도수 높은 순으로 정렬
-        name_counts = name_counts.sort_values(by='count', ascending=False)
-
-        # 2. Chart.js가 사용할 labels (회사 이름)과 data (빈도수) 추출
-        labels = name_counts['company_name'].tolist()
-        data = name_counts['count'].tolist()
-
-        # 3. JSON 형식으로 변환 (템플릿으로 전달)
-        chart_data = {
-            'labels': labels,
-            'data': data
-        }
-        chart_data_json = json.dumps(chart_data)
-
     context = {
-        'data_list': latest_companies,
-        'chart_data_json': chart_data_json  # Chart.js가 사용할 JSON 데이터 전달
+        "data_list": [],
+        "chart_data_json": "{}",
+        "database_error": None,
     }
 
-    print(f"--- 데이터베이스 조회 결과: 총 {len(latest_companies)}개 데이터 조회 ---")
-    print("--- Chart.js JSON Data (일부) ---")
-    print(chart_data_json[:100] + "...")  # JSON 데이터 확인
-    print("--------------------------")
+    mongo_uri = os.getenv("DB_URI", "").strip()
+    db_name = os.getenv("DB_NAME", "darkweb").strip()
 
-    return render(request, 'mongoDbConnect/table.html', context)
+    if not mongo_uri:
+        context["database_error"] = (
+            "DB_URI 환경변수가 설정되지 않았습니다."
+        )
+        return render(
+            request,
+            "mongoDbConnect/table.html",
+            context,
+        )
+
+    client = None
+
+    try:
+        client = MongoClient(
+            mongo_uri,
+            serverSelectionTimeoutMS=5000,
+        )
+        client.admin.command("ping")
+
+        collection = client[db_name][COLLECTION_NAME]
+
+        latest_companies = list(
+            collection.find({})
+            .sort("scraped_time", -1)
+            .limit(100)
+        )
+
+        name_counts = Counter(
+            str(item.get("company_name") or "unknown")
+            for item in latest_companies
+        )
+        most_common_names = name_counts.most_common()
+
+        chart_data = {
+            "labels": [
+                name
+                for name, _ in most_common_names
+            ],
+            "data": [
+                count
+                for _, count in most_common_names
+            ],
+        }
+
+        context["data_list"] = latest_companies
+        context["chart_data_json"] = json.dumps(
+            chart_data,
+            ensure_ascii=False,
+        )
+
+        print(
+            "MongoDB 조회 성공: "
+            f"{len(latest_companies)}개 문서"
+        )
+
+    except PyMongoError as error:
+        context["database_error"] = (
+            "MongoDB에서 데이터를 불러오지 못했습니다."
+        )
+        print(
+            "MongoDB 조회 실패: "
+            f"{type(error).__name__}"
+        )
+
+    finally:
+        if client is not None:
+            client.close()
+
+    return render(
+        request,
+        "mongoDbConnect/table.html",
+        context,
+    )
